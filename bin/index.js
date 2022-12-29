@@ -1,11 +1,8 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-app.use(cors());
-require("dotenv").config();
+const app = require("../app");
 const port = process.env.PORT || 8000;
-const mongoose = require("mongoose");
-app.use(express.json());
+
+// const mongoose = require("mongoose");
+
 // const bodyParser = require('body-parser');
 // app.use(bodyParser());
 
@@ -32,19 +29,5 @@ app.use(express.json());
 // });
 
 /* mongoDB end*/
-
-app.post("/getRiskValues", async (req, res) => {
-  console.log(req.body);
-  const url = "https://sandbox.onboarding-api.evergreen.de/risk-rate/calculate";
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(req.body),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const result = await response.json();
-  res.send(result);
-});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
