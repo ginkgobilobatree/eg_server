@@ -1,1 +1,2 @@
-# eg_server
+Um mit dieser kleinen App ein Ergebnis zu erhalten, muss ebenso das Repo "evergreen" geforkt und gestartet werden.
+Sowohl "evergreen" als auch "eg_server" werden nach dem Wechsel in die jeweilige Directory und einem "npm install" via "npm start" gestartet. Beide Apps müssen simultan laufen.
