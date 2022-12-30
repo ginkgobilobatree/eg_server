@@ -6,6 +6,7 @@
     const Middleware = require("./Middleware");
 
     router.post("/getRiskValues", Middleware.postData);
+    router.post("/storeUserData", Middleware.storeData);
 
     module.exports = router;
 })();

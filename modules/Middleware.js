@@ -11,8 +11,17 @@
           },
         });
         const result = await response.json();
+        // console.log(result);
         res.send(result);
     }
 
-    module.exports = {postData}
+    async function storeData(req, res) {
+      const timestamp = Date.now();
+      console.log(req.body)
+      console.log(timestamp)
+      // const url = irgendwas mongo-mäßiges
+      res.send({saved: true})
+    }
+
+    module.exports = {postData, storeData}
 })();
