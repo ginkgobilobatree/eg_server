@@ -11,7 +11,8 @@
         useUnifiedTopology: true,
       }
     )
-    .then(() => console.log("connected to mongoDB"));
+    .then(() => console.log("connected to mongoDB"))
+    .catch((err) => console.log(err));
 
   const riskValuesSchema = new mongoose.Schema({
     yin: { type: Number, required: true },
@@ -39,16 +40,18 @@
         volatility: reqBody.userData.riskValues.volatility,
       },
     });
-    userD.save().then(
-      () => console.log("One entry added"),
-      (err) => console.log(err)
-    );
+    userD
+      .save()
+      .then(() => console.log("One entry added"))
+      .catch((err) => console.log(err));
   }
 
   async function retrieveFromMongoDB(timestamp, res) {
+    //hier müssten noch headers neu gesetzt werden, da wegen eines manchmal auftretenden Errors der server crashed
+    // => Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
     await UserData.find(timestamp, (err, found) => {
       if (found) {
-        res.send(found[0]);
+        res.send(found[0]); //Daten werden aus DB als array geliefert
         return found;
       }
       return err;

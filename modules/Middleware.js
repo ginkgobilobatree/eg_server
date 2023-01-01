@@ -18,8 +18,7 @@
   }
 
   async function storeData(req, res) {
-    const timestamp = Date.now();
-    console.log(req.body);
+    const timestamp = Date.now(); //simuliert einzigartige URL
 
     MongoDB.storeInMongoDB(timestamp, req.body);
 
@@ -34,7 +33,7 @@
     );
 
     res.send(result);
-    return result;  
+    return result;
   }
 
   module.exports = { postData, storeData, getOldResult };
